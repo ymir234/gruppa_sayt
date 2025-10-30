@@ -1,0 +1,703 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel{% endblock %}
+
+{% block content %}
+  <div class="position-fixed top-0 end-0 m-3" style="z-index: 1050;">
+    <button class="btn btn-info btn-lg rounded-pill shadow-lg" 
+            data-bs-toggle="modal" 
+            data-bs-target="#statsModal"
+            title="Statistikani ko'rish">
+        <i class="fa-solid fa-chart-bar"></i>
+    </button>
+  </div>
+
+  <div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2><i class="fa-solid fa-user-shield me-2"></i>Admin Panel</h2>
+      <div class="d-flex align-items-center">
+          <span class="badge bg-secondary me-2">{{ session.admin_username }}</span>
+          <a href="/admin/change_password" class="btn btn-outline-primary btn-sm me-2">
+              <i class="fa-solid fa-key me-1"></i>Parolni o'zgartirish
+          </a>
+          <a href="/admin/logout" class="btn btn-outline-danger btn-sm">
+              <i class="fa-solid fa-right-from-bracket me-1"></i>Chiqish
+          </a>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <!-- Talabalar boshqaruvi -->
+      <div class="col-md-6 mb-4">
+        <div class="card cyber-card h-100">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0"><i class="fa-solid fa-users me-2"></i>Talabalar boshqaruvi</h5>
+          </div>
+          <div class="card-body admin-form">
+            <!-- Yangi talaba qo'shish form -->
+            <form action="/admin/add_student" method="POST" class="mb-4">
+              <h6>Yangi talaba qo'shish:</h6>
+              <div class="row g-2">
+                <div class="col-md-6">
+                  <input type="text" class="form-control form-control-sm" name="last_name" placeholder="Familiya" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control form-control-sm" name="first_name" placeholder="Ism" required>
+                </div>
+                <div class="col-12">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-text">+998</span>
+                    <input type="text" class="form-control" name="phone" placeholder="901234567" required maxlength="9">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <input type="text" class="form-control form-control-sm" name="telegram" placeholder="Telegram (@username)">
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-success btn-sm w-100">
+                    <i class="fa-solid fa-user-plus me-1"></i>Talaba qo'shish
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Mavjud talabalar -->
+            <h6>Mavjud talabalar ({{ students|length }} ta):</h6>
+            <div class="row" style="max-height: 300px; overflow-y: auto;">
+              {% for student in students %}
+              <div class="col-md-6 mb-3">
+                <div class="card student-card">
+                  <div class="card-body p-3 position-relative">
+                    <div class="student-actions" style="position: absolute; top: 10px; right: 10px; display: none;">
+                      <button class="btn btn-warning btn-sm edit-btn" 
+                              data-id="{{ student.id }}"
+                              title="Tahrirlash">
+                        <i class="fa-solid fa-edit"></i>
+                      </button>
+                      <button class="btn btn-danger btn-sm delete-btn ms-1" 
+                              data-type="student" 
+                              data-id="{{ student.id }}"
+                              title="O'chirish">
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </div>
+                    <h6 class="card-title mb-2">{{ student.last_name }} {{ student.first_name }}</h6>
+                    <p class="card-text mb-1 small">
+                      <i class="fa-solid fa-phone me-1"></i>{{ student.phone }}
+                    </p>
+                    {% if student.social_media %}
+                    <p class="card-text mb-0 small">
+                      <i class="fa-solid fa-share-nodes me-1"></i>
+                      {% if 'telegram' in student.social_media %}Telegram{% endif %}
+                      {% if 'instagram' in student.social_media %}, Instagram{% endif %}
+                      {% if 'facebook' in student.social_media %}, Facebook{% endif %}
+                    </p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Yangiliklar boshqaruvi -->
+      <div class="col-md-6 mb-4">
+        <div class="card cyber-card h-100">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="fa-solid fa-newspaper me-2"></i>Yangiliklar boshqaruvi</h5>
+          </div>
+          <div class="card-body admin-form">
+            <!-- Yangi yangilik qo'shish form -->
+            <form action="/admin/add_news" method="POST" enctype="multipart/form-data" class="mb-4">
+              <h6>Yangi yangilik qo'shish:</h6>
+              <div class="mb-2">
+                <input type="text" class="form-control form-control-sm" name="title" placeholder="Sarlavha" required>
+              </div>
+              <div class="mb-2">
+                <textarea class="form-control form-control-sm" name="content" rows="3" placeholder="Matn" required></textarea>
+              </div>
+              <div class="mb-2">
+                <input type="file" class="form-control form-control-sm" name="images" multiple accept="image/*">
+                <small class="text-muted">Bir nechta rasm tanlash mumkin (maksimum 5 ta)</small>
+              </div>
+              <button type="submit" class="btn btn-primary btn-sm w-100">
+                <i class="fa-solid fa-plus me-1"></i>Yangilik qo'shish
+              </button>
+            </form>
+
+            <!-- Mavjud yangiliklar -->
+            <h6>Mavjud yangiliklar ({{ news|length }} ta):</h6>
+            <div style="max-height: 300px; overflow-y: auto;">
+              {% for item in news %}
+              <div class="d-flex justify-content-between align-items-center p-2 border-bottom">
+                <div>
+                  <strong>{{ item.title }}</strong><br>
+                  <small class="text-muted">{{ item.content[:50] }}...</small><br>
+                  <small class="text-muted">{{ item.created_at[:10] }}</small>
+                </div>
+                <div>
+                  <button class="btn btn-danger btn-sm delete-btn" 
+                          data-type="news" 
+                          data-id="{{ item.id }}"
+                          title="O'chirish">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Galereya boshqaruvi -->
+      <div class="col-md-6 mb-4">
+        <div class="card cyber-card h-100">
+          <div class="card-header bg-warning text-dark">
+            <h5 class="mb-0"><i class="fa-solid fa-images me-2"></i>Galereya boshqaruvi</h5>
+          </div>
+          <div class="card-body admin-form">
+            <!-- Yangi rasm qo'shish form -->
+            <form action="/admin/add_gallery" method="POST" enctype="multipart/form-data" class="mb-4">
+              <h6>Yangi rasm qo'shish:</h6>
+              <div class="mb-2">
+                <input type="text" class="form-control form-control-sm" name="title" placeholder="Sarlavha" required>
+              </div>
+              <div class="mb-2">
+                <textarea class="form-control form-control-sm" name="description" rows="2" placeholder="Tavsif"></textarea>
+              </div>
+              <div class="mb-2">
+                <input type="file" class="form-control form-control-sm" name="images" multiple accept="image/*" required>
+                <small class="text-muted">Bir nechta rasm tanlash mumkin (maksimum 5 ta)</small>
+              </div>
+              <button type="submit" class="btn btn-warning btn-sm w-100">
+                <i class="fa-solid fa-upload me-1"></i>Rasmlarni yuklash
+              </button>
+            </form>
+
+            <!-- Mavjud galereya yozuvlari -->
+            <h6>Mavjud galereya yozuvlari ({{ gallery|length }} ta):</h6>
+            <div style="max-height: 400px; overflow-y: auto;">
+              {% for item in gallery %}
+              <div class="card mb-2">
+                <div class="card-body p-2">
+                  <div class="row align-items-center">
+                    <div class="col-md-2">
+                      {% if item.image %}
+                        {% set first_image = item.image.split(',')[0] %}
+                        <img src="{{ url_for('static', filename='uploads/' + first_image) }}" 
+                             class="img-fluid rounded" style="height: 60px; object-fit: cover;">
+                      {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                      <strong>{{ item.title }}</strong><br>
+                      <small class="text-muted">{{ item.description }}</small><br>
+                      <small class="text-muted">
+                        {{ item.created_at[:10] }} • 
+                        {% if item.image %}
+                          {{ item.image.split(',')|length }} ta rasm
+                        {% else %}
+                          0 ta rasm
+                        {% endif %}
+                      </small>
+                    </div>
+                    <div class="col-md-4 text-end">
+                      <button class="btn btn-danger btn-sm delete-btn" 
+                              data-type="gallery" 
+                              data-id="{{ item.id }}"
+                              title="O'chirish">
+                        <i class="fa-solid fa-trash"></i> O'chirish
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dars jadvali boshqaruvi -->
+      <div class="col-md-6 mb-4">
+        <div class="card cyber-card h-100">
+          <div class="card-header bg-info text-white">
+            <h5 class="mb-0"><i class="fa-solid fa-calendar-alt me-2"></i>Dars jadvali boshqaruvi</h5>
+          </div>
+          <div class="card-body admin-form">
+            <!-- Yangi dars qo'shish form -->
+            <form action="/admin/add_schedule" method="POST" class="mb-4" id="scheduleForm">
+              <h6>Yangi dars qo'shish:</h6>
+              <div class="row g-2 align-items-end">
+                <div class="col-md-2">
+                  <label class="form-label small">Kun</label>
+                  <select class="form-control form-control-sm" name="day" id="daySelect" required>
+                    <option value="">Tanlang</option>
+                    <option value="Dushanba">Dushanba</option>
+                    <option value="Seshanba">Seshanba</option>
+                    <option value="Chorshanba">Chorshanba</option>
+                    <option value="Payshanba">Payshanba</option>
+                    <option value="Juma">Juma</option>
+                    <option value="Shanba">Shanba</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label class="form-label small">Vaqt</label>
+                  <select class="form-control form-control-sm" name="time_slot" id="timeSelect" required>
+                    <option value="">Tanlang</option>
+                    <option value="08:30-09:50">08:30-09:50</option>
+                    <option value="10:00-11:20">10:00-11:20</option>
+                    <option value="11:30-12:50">11:30-12:50</option>
+                    <option value="13:30-14:50">13:30-14:50</option>
+                    <option value="15:00-16:20">15:00-16:20</option>
+                    <option value="16:30-17:50">16:30-17:50</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label class="form-label small">Fan</label>
+                  <select class="form-control form-control-sm" name="subject" id="subjectSelect" required>
+                    <option value="">Tanlang</option>
+                    <option value="Hisob">Hisob</option>
+                                        <option value="Dasturlash">Dasturlash</option>
+                    <option value="Dinshunoslik">Dinshunoslik</option>
+                    <option value="Fizika">Fizika</option>
+                    <option value="Akademik yozuv">Akademik yozuv</option>
+                    <option value="Ingliz tili">Ingliz tili</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label class="form-label small">Dars turi</label>
+                  <select class="form-control form-control-sm" name="lesson_type" id="lessonTypeSelect" required>
+                    <option value="">Avval fan tanlang</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label class="form-label small">Xona</label>
+                  <input type="text" class="form-control form-control-sm" name="room" required placeholder="101, 202, ...">
+                </div>
+                <div class="col-md-2">
+                  <label class="form-label small">O'qituvchi</label>
+                  <input type="text" class="form-control form-control-sm" name="teacher" required placeholder="Ism Familiya">
+                </div>
+                <div class="col-md-2">
+                  <button type="submit" class="btn btn-info btn-sm w-100">
+                    <i class="fa-solid fa-plus me-1"></i>Qo'shish
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Mavjud darslar jadvali -->
+            <h6 class="mb-3">Mavjud darslar:</h6>
+            <div class="table-responsive">
+              <table class="table table-bordered table-sm">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Kun</th>
+                    <th>Vaqt</th>
+                    <th>Fan</th>
+                    <th>Xona</th>
+                    <th>O'qituvchi</th>
+                    <th>Harakat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in schedule %}
+                  <tr>
+                    <td>{{ item.day }}</td>
+                    <td>{{ item.time }}</td>
+                    <td>{{ item.subject }}</td>
+                    <td>{{ item.room }}</td>
+                    <td>{{ item.teacher }}</td>
+                    <td>
+                      <button class="btn btn-danger btn-sm delete-btn" 
+                              data-type="schedule" 
+                              data-id="{{ item.id }}"
+                              title="O'chirish">
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aloqa boshqaruvi -->
+      <div class="col-12 mb-4">
+        <div class="card cyber-card">
+          <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><i class="fa-solid fa-address-book me-2"></i>Aloqa ma'lumotlari boshqaruvi</h5>
+            <a href="/admin/delete_all_contacts" class="btn btn-danger btn-sm" 
+               onclick="return confirm('Rostan ham BARCHA aloqa ma\'lumotlarini o\'chirmoqchimisiz?')">
+              <i class="fa-solid fa-trash me-1"></i>Barchasini o'chirish
+            </a>
+          </div>
+          <div class="card-body">
+            <!-- Mavjud aloqa ma'lumotlari -->
+            <h6 class="mb-3">Mavjud aloqa ma'lumotlari ({{ contacts|length }} ta):</h6>
+            <div class="row">
+              {% for contact in contacts %}
+              <div class="col-md-6 col-lg-3 mb-3">
+                <div class="card h-100">
+                  <div class="card-header 
+                    {% if 'Sardori' in contact.position %}bg-primary
+                    {% elif 'Tyutor' in contact.position %}bg-success
+                    {% elif 'Ma\'naviyat' in contact.position %}bg-warning text-dark
+                    {% elif 'Dekan' in contact.position %}bg-info
+                    {% else %}bg-secondary{% endif %} text-white">
+                    <h6 class="mb-0">
+                      {% if 'Sardori' in contact.position %}<i class="fa-solid fa-crown me-2"></i>
+                      {% elif 'Tyutor' in contact.position %}<i class="fa-solid fa-chalkboard-user me-2"></i>
+                      {% elif 'Ma\'naviyat' in contact.position %}<i class="fa-solid fa-heart me-2"></i>
+                      {% elif 'Dekan' in contact.position %}<i class="fa-solid fa-user-tie me-2"></i>
+                      {% else %}<i class="fa-solid fa-phone me-2"></i>{% endif %}
+                      {{ contact.position }}
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <h6>{{ contact.name }}</h6>
+                    <p class="mb-1"><strong>Tel:</strong> {{ contact.phone }}</p>
+                    {% if contact.telegram %}
+                    <p class="mb-1"><strong>Telegram:</strong> {{ contact.telegram }}</p>
+                    {% endif %}
+                    {% if contact.email %}
+                    <p class="mb-1"><strong>Email:</strong> {{ contact.email }}</p>
+                    {% endif %}
+                    {% if contact.address %}
+                    <p class="mb-1"><strong>Manzil:</strong> {{ contact.address }}</p>
+                    {% endif %}
+                    {% if contact.work_hours %}
+                    <p class="mb-0"><strong>Ish vaqti:</strong> {{ contact.work_hours }}</p>
+                    {% endif %}
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn btn-danger btn-sm delete-btn" 
+                            data-type="contact" 
+                            data-id="{{ contact.id }}"
+                            title="O'chirish">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+
+            <!-- Yangi aloqa qo'shish formasi -->
+            <div class="mt-4">
+              <h6>Yangi aloqa qo'shish:</h6>
+              <form action="/admin/add_contact" method="POST" class="admin-form">
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <label class="form-label">Lavozim</label>
+                    <input type="text" class="form-control form-control-sm" name="position" 
+                           placeholder="Guruh Sardori" required>
+                  </div>
+                  <div class="col-md-8">
+                    <label class="form-label">To'liq Ism</label>
+                    <input type="text" class="form-control form-control-sm" name="name" 
+                           placeholder="Aziz Abdurahmonov" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Telefon</label>
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-text">+998</span>
+                      <input type="text" class="form-control" name="phone" 
+                             placeholder="901234567" required maxlength="9">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Telegram</label>
+                    <input type="text" class="form-control form-control-sm" name="telegram" 
+                           placeholder="@username">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control form-control-sm" name="email" 
+                           placeholder="email@example.com">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Manzil</label>
+                    <input type="text" class="form-control form-control-sm" name="address" 
+                           placeholder="Toshkent shahar">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Ish vaqti</label>
+                    <input type="text" class="form-control form-control-sm" name="work_hours" 
+                           placeholder="Dushanba-Juma, 9:00-18:00">
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-success btn-sm">
+                      <i class="fa-solid fa-user-plus me-1"></i>Aloqa qo'shish
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Adminlar boshqaruvi (faqat superadmin uchun) -->
+      {% if session.admin_role == 'superadmin' %}
+      <div class="col-md-6 mb-4">
+        <div class="card cyber-card h-100">
+          <div class="card-header bg-dark text-white">
+            <h5 class="mb-0"><i class="fa-solid fa-user-shield me-2"></i>Adminlar boshqaruvi</h5>
+          </div>
+          <div class="card-body admin-form">
+            <!-- Yangi admin qo'shish form -->
+            <form action="/admin/add_admin" method="POST" class="mb-4">
+              <h6>Yangi admin qo'shish:</h6>
+              <div class="row g-2">
+                <div class="col-12">
+                  <input type="text" class="form-control form-control-sm" name="username" placeholder="Login" required>
+                </div>
+                <div class="col-12">
+                  <input type="password" class="form-control form-control-sm" name="password" placeholder="Parol" required>
+                </div>
+                <div class="col-12">
+                  <select class="form-control form-control-sm" name="role" required>
+                    <option value="admin">Admin</option>
+                    <option value="superadmin">Super Admin</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-dark btn-sm w-100">
+                    <i class="fa-solid fa-user-plus me-1"></i>Admin qo'shish
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Mavjud adminlar -->
+            <h6>Mavjud adminlar:</h6>
+            <div style="max-height: 300px; overflow-y: auto;">
+              {% for admin in admins %}
+              <div class="d-flex justify-content-between align-items-center p-2 border-bottom">
+                <div>
+                  <strong>{{ admin.username }}</strong><br>
+                  <small class="text-muted">{{ admin.role }} • {{ admin.created_at[:10] }}</small>
+                </div>
+                <div>
+                  {% if admin.role != 'superadmin' or admin.username == session.admin_username %}
+                  <button class="btn btn-danger btn-sm delete-btn" 
+                          data-type="admin" 
+                          data-id="{{ admin.id }}"
+                          title="O'chirish">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                  {% endif %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+    </div>  <!-- row yopildi -->
+  </div>  <!-- container yopildi -->
+
+  <!-- Statistika modali -->
+  <div class="modal fade" id="statsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-info text-white">
+          <h5 class="modal-title">
+            <i class="fa-solid fa-chart-bar me-2"></i>Statistika
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Statistikalar -->
+          <div class="row text-center mb-3">
+            <div class="col-6 mb-3">
+              <div class="card border-primary">
+                <div class="card-body py-3">
+                  <h3 class="text-primary mb-1">{{ students|length }}</h3>
+                  <small class="text-muted">Talabalar</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="card border-success">
+                <div class="card-body py-3">
+                  <h3 class="text-success mb-1">{{ news|length }}</h3>
+                  <small class="text-muted">Yangiliklar</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="card border-warning">
+                <div class="card-body py-3">
+                  <h3 class="text-warning mb-1">{{ gallery|length }}</h3>
+                  <small class="text-muted">Rasmlar</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="card border-info">
+                <div class="card-body py-3">
+                  <h3 class="text-info mb-1">{{ schedule|length }}</h3>
+                  <small class="text-muted">Darslar</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Login statistikasi -->
+          <div class="mt-4">
+            <h6 class="border-bottom pb-2">Oxirgi Loginlar</h6>
+            <div style="max-height: 200px; overflow-y: auto;">
+              {% if stats.recent_logins %}
+                {% for login in stats.recent_logins %}
+                <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                  <div>
+                    <small class="fw-bold">{{ login.display_username }}</small><br>
+                    <small class="text-muted">{{ login.ip_address }}</small>
+                  </div>
+                  <div>
+                    {% if login.success %}
+                    <span class="badge bg-success">Muvaffaqiyatli</span>
+                    {% else %}
+                    <span class="badge bg-danger">Muvaffaqiyatsiz</span>
+                    {% endif %}
+                  </div>
+                </div>
+                {% endfor %}
+              {% else %}
+                <p class="text-muted text-center">Hali loginlar mavjud emas</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // Notification funksiyasi
+  function showNotification(message, type) {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show`;
+    alertDiv.innerHTML = `
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+    
+    const mainElement = document.querySelector('main');
+    if (mainElement) {
+      mainElement.insertBefore(alertDiv, mainElement.firstChild);
+    }
+    
+    setTimeout(() => {
+      if (alertDiv.parentElement) {
+        alertDiv.remove();
+      }
+    }, 3000);
+  }
+
+  // Bitta delete funksiyasi
+  function deleteItem(type, id, element) {
+    const messages = {
+      'student': 'bu talabani',
+      'news': 'bu yangilikni', 
+      'gallery': 'bu rasmi',
+      'schedule': 'bu darsni',
+      'admin': 'bu adminni',
+      'contact': 'bu aloqa ma\'lumotini'
+    };
+    
+    if (confirm(`Rostan ham ${messages[type]} o\'chirmoqchimisiz?`)) {
+      const url = type === 'contact' 
+        ? `/admin/delete_contact/${id}`
+        : `/admin/delete_${type}/${id}`;
+      
+      const options = type === 'contact' ? { method: 'DELETE' } : {};
+      
+      fetch(url, options)
+        .then(response => {
+          if (type === 'contact') {
+            return response.json().then(data => ({ ok: data.success }));
+          }
+          return { ok: response.ok };
+        })
+        .then(({ ok }) => {
+          if (ok) {
+            showNotification(`${type} o\'chirildi!`, 'success');
+            if (element) {
+              element.remove();
+            }
+            setTimeout(() => location.reload(), 1000);
+          } else {
+            showNotification('Xatolik yuz berdi!', 'error');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          showNotification('Xatolik yuz berdi!', 'error');
+        });
+    }
+  }
+
+  // Barcha delete tugmalari uchun event listener
+  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('.delete-btn')) {
+        const button = e.target.closest('.delete-btn');
+        const type = button.getAttribute('data-type');
+        const id = button.getAttribute('data-id');
+        
+        if (type && id) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          let element;
+          if (type === 'gallery') {
+            element = button.closest('.card.mb-2');
+          } else if (type === 'schedule') {
+            element = button.closest('tr');
+          } else if (type === 'contact') {
+            element = button.closest('.col-md-6, .col-lg-3');
+          } else {
+            element = button.closest('.d-flex.justify-content-between.align-items-center');
+          }
+          
+          deleteItem(type, id, element);
+        }
+      }
+    });
+
+    // Fan va dars turini bog'lash
+    const subjectSelect = document.getElementById('subjectSelect');
+    const lessonTypeSelect = document.getElementById('lessonTypeSelect');
+    
+    if (subjectSelect && lessonTypeSelect) {
+      subjectSelect.addEventListener('change', function() {
+        const subject = this.value;
+        lessonTypeSelect.innerHTML = '<option value="">Dars turi</option>';
+        
+        if (subject === 'Dinshunoslik') {
+          lessonTypeSelect.innerHTML += `
+            <option value="Amaliy">Amaliy</option>
+            <option value="Seminar">Seminar</option>
+          `;
+        } else if (subject && subject !== '') {
+          lessonTypeSelect.innerHTML += `
+            <option value="Ma\'ruza">Ma'ruza</option>
+            <option value="Amaliy">Amaliy</option>
+          `;
+        }
+      });
+    }
+  });
+  </script>
+{% endblock %}

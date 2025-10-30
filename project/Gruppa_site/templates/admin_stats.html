@@ -1,0 +1,69 @@
+<!-- templates/admin_stats.html -->
+{% extends "base.html" %}
+{% block title %}Statistika{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2><i class="fa-solid fa-chart-bar me-2"></i>Statistika</h2>
+    
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <div class="card stats-card">
+                <div class="card-body text-center">
+                    <h3>{{ stats.total_students }}</h3>
+                    <p>Jami Talabalar</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card stats-card">
+                <div class="card-body text-center">
+                    <h3>{{ stats.total_news }}</h3>
+                    <p>Yangiliklar</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card stats-card">
+                <div class="card-body text-center">
+                    <h3>{{ stats.total_gallery }}</h3>
+                    <p>Rasmlar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Oxirgi loginlar -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Oxirgi Tizim Kirishlar</h5>
+        </div>
+        <div class="card-body">
+            {% if stats.recent_logins %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Foydalanuvchi</th>
+                            <th>IP Manzil</th>
+                            <th>Vaqt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for login in stats.recent_logins %}
+                        <tr>
+                            <td>{{ login.username }}</td>
+                            <td>{{ login.ip_address }}</td>
+                            <td>{{ login.timestamp }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="text-muted">Hali loginlar mavjud emas</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

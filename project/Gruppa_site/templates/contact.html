@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}Aloqa{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4"><i class="fa-solid fa-address-book me-2"></i>Aloqa</h2>
+
+  <div class="row">
+    {% for contact in contacts %}
+    <div class="col-md-6 mb-4">
+      <div class="card cyber-card h-100 contact-card">
+        <div class="card-header 
+          {% if 'Sardori' in contact.position %}bg-primary
+          {% elif 'Tyutor' in contact.position %}bg-success
+          {% elif 'Ma\'naviyat' in contact.position %}bg-warning text-dark
+          {% else %}bg-info{% endif %} text-white">
+          <h5 class="mb-0">
+            {% if 'Sardori' in contact.position %}<i class="fa-solid fa-crown me-2"></i>
+            {% elif 'Tyutor' in contact.position %}<i class="fa-solid fa-chalkboard-user me-2"></i>
+            {% elif 'Ma\'naviyat' in contact.position %}<i class="fa-solid fa-heart me-2"></i>
+            {% else %}<i class="fa-solid fa-phone me-2"></i>{% endif %}
+            {{ contact.position }}
+          </h5>
+        </div>
+        <div class="card-body contact-info">
+          <h4 class="text-center mb-3 contact-name">{{ contact.name }}</h4>
+          <div class="contact-details">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fa-solid fa-phone me-3 text-primary"></i>
+              <div>
+                <strong class="contact-label">Telefon:</strong><br>
+                <a href="tel:{{ contact.phone }}" class="text-decoration-none contact-text">{{ contact.phone }}</a>
+              </div>
+            </div>
+            
+            {% if contact.telegram %}
+            <div class="d-flex align-items-center mb-2">
+              <i class="fa-brands fa-telegram me-3 text-info"></i>
+              <div>
+                <strong class="contact-label">Telegram:</strong><br>
+                <a href="https://t.me/{{ contact.telegram|replace('@', '') }}" target="_blank" class="text-decoration-none contact-text">{{ contact.telegram }}</a>
+              </div>
+            </div>
+            {% endif %}
+            
+            {% if contact.email %}
+            <div class="d-flex align-items-center mb-2">
+              <i class="fa-solid fa-envelope me-3 text-danger"></i>
+              <div>
+                <strong class="contact-label">Email:</strong><br>
+                <a href="mailto:{{ contact.email }}" class="text-decoration-none contact-text">{{ contact.email }}</a>
+              </div>
+            </div>
+            {% endif %}
+            
+            {% if contact.address %}
+            <div class="d-flex align-items-center mb-2">
+              <i class="fa-solid fa-location-dot me-3 text-success"></i>
+              <div>
+                <strong class="contact-label">Manzil:</strong><br>
+                <span class="contact-text">{{ contact.address }}</span>
+              </div>
+            </div>
+            {% endif %}
+            
+            {% if contact.work_hours %}
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-clock me-3 text-warning"></i>
+              <div>
+                <strong class="contact-label">Qabul vaqti:</strong><br>
+                <span class="contact-text">{{ contact.work_hours }}</span>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Umumiy ma'lumotlar -->
+  <div class="card cyber-card mt-4">
+    <div class="card-header bg-dark text-white">
+      <h5 class="mb-0"><i class="fa-solid fa-university me-2"></i>Umumiy Ma'lumotlar</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <h6><i class="fa-solid fa-graduation-cap me-2 text-primary"></i>Universitet</h6>
+          <p class="mb-2 contact-text">Nukus davlat texnika universiteti</p>
+          
+          <h6><i class="fa-solid fa-map-location-dot me-2 text-success"></i>Manzil</h6>
+          <p class="mb-2 contact-text">Qoraqalpog'iston Respublikasi Nukus shahri "108-aylana"</p>
+        </div>
+        <div class="col-md-6">
+          <h6><i class="fa-solid fa-laptop-code me-2 text-warning"></i>Kafedra</h6>
+          <p class="mb-2 contact-text">Telekommunikaciya texnologiyalari</p>
+          
+          <h6><i class="fa-solid fa-shield-halved me-2 text-info"></i>Yo'nalish</h6>
+          <p class="mb-0 contact-text">Kiberxavfsizlik injeneringi (109-25 KX o'zb)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.contact-name,
+.contact-label,
+.contact-text {
+    color: #1e293b;
+}
+
+body.dark-theme .contact-name,
+body.dark-theme .contact-label,
+body.dark-theme .contact-text {
+    color: #e2e8f0 !important;
+}
+</style>
+{% endblock %}

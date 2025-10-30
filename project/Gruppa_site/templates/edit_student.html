@@ -1,0 +1,100 @@
+<!-- templates/edit_student.html -->
+{% extends "base.html" %}
+{% block title %}Talabani Tahrirlash{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card cyber-card">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0"><i class="fa-solid fa-user-edit me-2"></i>Talabani Tahrirlash</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Familiya</label>
+                                <input type="text" class="form-control" name="last_name" 
+                                       value="{{ student.last_name }}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Ism</label>
+                                <input type="text" class="form-control" name="first_name" 
+                                       value="{{ student.first_name }}" required>
+                            </div>
+                            
+                            <div class="col-12">
+                                <label class="form-label fw-semibold">Telefon</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">+998</span>
+                                    <input type="text" class="form-control" name="phone" 
+                                           value="{{ student.phone|replace('+998', '') }}" 
+                                           placeholder="901234567" required maxlength="9">
+                                </div>
+                            </div>
+
+                            <!-- Social media section -->
+                            <div class="col-12">
+                                <label class="form-label fw-semibold">Ijtimoiy Tarmoqlar</label>
+                                
+                                {% set telegram = '' %}
+                                {% set instagram = '' %}
+                                {% set facebook = '' %}
+                                
+                                {% if student.social_media %}
+                                    {% for social in student.social_media.split('|') %}
+                                        {% if social.startswith('telegram:') %}
+                                            {% set telegram = social.split(':')[1] %}
+                                        {% elif social.startswith('instagram:') %}
+                                            {% set instagram = social.split(':')[1] %}
+                                        {% elif social.startswith('facebook:') %}
+                                            {% set facebook = social.split(':')[1] %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+
+                                <div class="row g-2">
+                                    <div class="col-md-4">
+                                        <div class="input-group input-group-sm">
+                                            <span class="input-group-text"><i class="fab fa-telegram"></i></span>
+                                            <input type="text" class="form-control" name="telegram" 
+                                                   value="{{ telegram }}" placeholder="@username">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group input-group-sm">
+                                            <span class="input-group-text"><i class="fab fa-instagram"></i></span>
+                                            <input type="text" class="form-control" name="instagram" 
+                                                   value="{{ instagram }}" placeholder="username">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group input-group-sm">
+                                            <span class="input-group-text"><i class="fab fa-facebook"></i></span>
+                                            <input type="text" class="form-control" name="facebook" 
+                                                   value="{{ facebook }}" placeholder="username">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-warning flex-fill">
+                                        <i class="fa-solid fa-save me-1"></i>Saqlash
+                                    </button>
+                                    <a href="/admin/panel" class="btn btn-secondary">
+                                        <i class="fa-solid fa-times me-1"></i>Bekor qilish
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

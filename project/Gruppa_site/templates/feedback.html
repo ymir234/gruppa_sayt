@@ -1,0 +1,190 @@
+<!-- /home/coder/project/Gruppa_site/templates/feedback.html -->
+{% extends "base.html" %}
+{% block title %}Fikr va Takliflar{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card cyber-card">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0"><i class="fa-solid fa-comments me-2"></i>Fikr va Takliflar</h4>
+        </div>
+        <div class="card-body">
+          <p class="lead">Sizning fikr va takliflaringiz biz uchun muhim! Guruh yaxshilanishi uchun o'z mulohazalaringizni qoldiring.</p>
+          
+          <form method="POST" id="feedbackForm">            
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Ismingiz</label>
+                <input type="text" class="form-control" name="name" 
+                       placeholder="Ismingizni kiriting" required>
+              </div>
+              
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Telefon yoki Telegram</label>
+                <input type="text" class="form-control" name="contact" 
+                       placeholder="Aloqa uchun ma'lumot">
+              </div>
+              
+              <div class="col-12">
+                <label class="form-label fw-semibold">Fikr/Taklif</label>
+                <textarea class="form-control" name="message" rows="6" 
+                          placeholder="Fikr yoki takliflaringizni yozing..." required></textarea>
+              </div>
+              
+              <div class="col-12">
+                <label class="form-label fw-semibold">Fikr turi</label>
+                <select class="form-select" name="type" required>
+                  <option value="">Tanlang</option>
+                  <option value="taklif">Taklif</option>
+                  <option value="shikoyat">Shikoyat</option>
+                  <option value="fikr">Fikr</option>
+                  <option value="savol">Savol</option>
+                </select>
+              </div>
+              
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="anonymous" id="anonymous">
+                  <label class="form-check-label" for="anonymous">
+                    Anonim qoldirish
+                  </label>
+                </div>
+              </div>
+              
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                  <i class="fa-solid fa-paper-plane me-2"></i>Yuborish
+                </button>
+              </div>
+            </div>
+          </form>
+          
+          <!-- Muvaffaqiyatli yuborilgandan keyin -->
+          <div id="successMessage" class="alert alert-success mt-3" style="display: none;">
+            <i class="fa-solid fa-check-circle me-2"></i>
+            Fikringiz muvaffaqiyatli yuborildi! Rahmat.
+          </div>
+        </div>
+      </div>
+      
+      <!-- Oldingi fikrlar (admin uchun) -->
+      {% if session.admin and feedbacks %}
+      <div class="card cyber-card mt-4">
+        <div class="card-header bg-info text-white">
+          <h5 class="mb-0"><i class="fa-solid fa-list me-2"></i>Fikrlar Ro'yxati</h5>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Ism</th>
+                  <th>Aloqa</th>
+                  <th>Fikr</th>
+                  <th>Tur</th>
+                  <th>Vaqt</th>
+                  <th>Harakat</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for feedback in feedbacks %}
+                <tr>
+                  <td>
+                    {% if feedback.is_anonymous %}
+                    <i class="fa-solid fa-user-secret me-1"></i>Anonim
+                    {% else %}
+                    {{ feedback.name }}
+                    {% endif %}
+                  </td>
+                  <td>{{ feedback.contact or '-' }}</td>
+                  <td>
+                    <div class="feedback-message" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
+                      {{ feedback.message }}
+                    </div>
+                  </td>
+                  <td>
+                    <span class="badge 
+                      {% if feedback.type == 'taklif' %}bg-success
+                      {% elif feedback.type == 'shikoyat' %}bg-danger
+                      {% elif feedback.type == 'savol' %}bg-info
+                      {% else %}bg-primary{% endif %}">
+                      {{ feedback.type }}
+                    </span>
+                  </td>
+                  <td>{{ feedback.created_at[:16] }}</td>
+                  <td>
+                    <button class="btn btn-danger btn-sm delete-feedback" 
+                            data-id="{{ feedback.id }}">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('feedbackForm');
+  const successMessage = document.getElementById('successMessage');
+  
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Bu yerda AJAX so'rovi bo'lishi kerak, lekin hozir oddiy redirect qilamiz
+      this.submit();
+    });
+  }
+  
+  // Fikr o'chirish
+  document.querySelectorAll('.delete-feedback').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const feedbackId = this.getAttribute('data-id');
+      if (confirm('Bu fikrni o\'chirishni istaysizmi?')) {
+        fetch(`/admin/delete_feedback/${feedbackId}`, {
+          method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            this.closest('tr').remove();
+            showNotification('Fikr o\'chirildi!', 'success');
+          }
+        });
+      }
+    });
+  });
+  
+  function showNotification(message, type) {
+    // Notification funksiyasi
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+    alertDiv.innerHTML = `
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+    document.querySelector('main').prepend(alertDiv);
+  }
+});
+</script>
+
+<style>
+.feedback-message {
+  max-height: 60px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+</style>
+{% endblock %}

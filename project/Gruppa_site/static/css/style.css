@@ -1,0 +1,1438 @@
+/* ========== BASE STILLAR ========== */
+.navbar-brand {
+    font-size: 1.5rem !important;
+    font-weight: 700;
+}
+
+.navbar-brand i {
+    font-size: 1.8rem !important;
+}
+
+.navbar-nav .nav-link.active {
+    color: #60a5fa !important;
+    font-weight: 600;
+    border-bottom: 2px solid #60a5fa;
+}
+
+.current-page {
+    display: none !important;
+}
+
+body {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    min-height: 100vh;
+    color: #1e293b !important;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.cyber-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    color: #1e293b !important;
+}
+
+.cyber-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border-color: #3b82f6;
+}
+
+.cyber-icon {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.navbar {
+    background: rgba(15, 23, 42, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer {
+    background: #0f172a;
+    border-top: 1px solid #334155;
+    color: #e2e8f0 !important;
+}
+
+footer a {
+    transition: 0.3s;
+    color: #e2e8f0 !important;
+}
+
+footer a:hover {
+    color: #60a5fa !important;
+}
+
+.cyber-badge {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+main {
+    padding-top: 80px;
+}
+
+.gallery-img {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    max-height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05);
+}
+
+.contact-card {
+    border-left: 4px solid #3b82f6;
+}
+
+.schedule-table th {
+    background: #1e293b;
+    color: white;
+}
+
+.news-card {
+    border-left: 4px solid #8b5cf6;
+}
+
+.form-control {
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    color: #1e293b !important;
+}
+
+.form-control:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+}
+
+.input-group-text {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+}
+
+.contact-form-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    color: #1e293b !important;
+}
+
+.contact-form-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.position-option-guruh { color: #3b82f6; }
+.position-option-tyutor { color: #10b981; }
+.position-option-maraviyat { color: #f59e0b; }
+.position-option-dekan { color: #8b5cf6; }
+.position-option-kafedra { color: #ef4444; }
+.position-option-oqituvchi { color: #06b6d4; }
+
+.form-control:valid {
+    border-color: #198754;
+}
+
+.form-control:invalid {
+    border-color: #1d1c1c;
+}
+
+.form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.social-input {
+    transition: all 0.3s ease;
+}
+
+.contact-form {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 8px;
+    padding: 1rem;
+    color: #1e293b !important;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.alert {
+    border: none;
+    border-radius: 8px;
+}
+
+.badge {
+    font-weight: 500;
+}
+
+/* Dars jadvali uchun qo'shimcha stillar */
+.lesson-item {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  border-left: 4px solid #3b82f6;
+  padding: 10px;
+  margin: 4px 0;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.lesson-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.lesson-item strong {
+  color: #1e293b;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.lesson-item small {
+  display: block;
+  line-height: 1.3;
+}
+
+.schedule-table td {
+  vertical-align: top;
+  min-width: 160px;
+  height: 120px;
+}
+.schedule-table th {
+  text-align: center;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  color: white !important;
+}
+
+.schedule-table .bg-light {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+  font-weight: 600;
+}
+
+/* Admin form improvements */
+.admin-form .form-control {
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+    color: #1e293b !important;
+    background-color: #ffffff !important;
+}
+
+.admin-form .form-control:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+}
+
+.admin-form input:invalid,
+.admin-form select:invalid {
+    border-color: #dee2e6 !important;
+    background-image: none !important;
+}
+
+.admin-form input:valid,
+.admin-form select:valid {
+    border-color: #dee2e6 !important;
+    background-image: none !important;
+}
+
+.admin-form .form-label {
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.admin-form .input-group-text {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    color: #6b7280;
+}
+
+/* ========== DARK THEME STILLARI ========== */
+body.dark-theme {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    color: #e2e8f0 !important;
+}
+
+/* /* Dark theme - BARCHA YOZUVLAR AJRATILGAN */
+body.dark-theme {
+    color: #e2e8f0 !important;
+}
+
+/* Sarlavhalar */
+body.dark-theme h1 { 
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+body.dark-theme h2 { 
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+body.dark-theme h3 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+body.dark-theme h4 { 
+    color: #f8fafc !important;
+    font-weight: 700 !important;
+}
+
+body.dark-theme h5 { 
+    color: #f8fafc !important;
+    font-weight: 700 !important;
+}
+
+body.dark-theme h6 {
+    color: #000 !important;
+    font-weight: 700 !important;
+    background: rgba(15,27,42,0) !important;
+    border-bottom: 1px solid #fff0;
+}
+
+/* Oddiy matnlar */
+body.dark-theme p {
+    color: #e2e8f0 !important;
+    font-weight: 500 !important;
+}
+
+body.dark-theme span {
+    color: #cbd5e1 !important;
+    font-weight: 500 !important;
+}
+
+body.dark-theme div {
+    color: #e2e8f0 !important;
+}
+
+/* Form elementlari */
+body.dark-theme label {
+    color: #f8fafc !important;
+    font-weight: 600 !important;
+}
+
+body.dark-theme .form-label {
+    color: #f8fafc !important;
+    font-weight: 600 !important;
+}
+
+/* Kuchli matnlar */
+body.dark-theme strong {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+/* style.css ga qo'shing */
+.modern-loader {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    animation: progress 2s ease-in-out infinite;
+}
+/* Tungi rejim matn kontrasti */
+body.dark-theme {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    color: #e2e8f0 !important;
+}
+
+/* Sarlavhalar */
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6 {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Kartalar matnlari */
+body.dark-theme .cyber-card,
+body.dark-theme .card {
+    background: linear-gradient(145deg, #1e293b 0%, #334155 100%) !important;
+    border: 1px solid #475569 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .card-title,
+body.dark-theme .card-text,
+body.dark-theme .cyber-title,
+body.dark-theme .cyber-subtitle,
+body.dark-theme .cyber-text {
+    color: #e2e8f0 !important;
+}
+
+/* Jadval matnlari */
+body.dark-theme .table {
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .table th,
+body.dark-theme .table td {
+    color: #e2e8f0 !important;
+    border-color: #475569 !important;
+}
+
+/* Form elementlari */
+body.dark-theme .form-control {
+    background-color: #1e293b !important;
+    border-color: #475569 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .form-control::placeholder {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .form-label {
+    color: #f8fafc !important;
+}
+
+/* Badge va tugmalar */
+body.dark-theme .badge {
+    color: #fff !important;
+}
+
+/* Linklar */
+body.dark-theme a {
+    color: #60a5fa !important;
+}
+
+body.dark-theme a:hover {
+    color: #1400ff !important;
+}
+
+/* Text-muted */
+body.dark-theme .text-muted {
+    color: #94a3b8 !important;
+}
+
+/* Student cardlar */
+body.dark-theme .student-card {
+    background: linear-gradient(145deg, #1e293b 0%, #334155 100%) !important;
+    border-color: #475569 !important;
+}
+
+body.dark-theme .student-text,
+body.dark-theme .student-link {
+    color: #e2e8f0 !important;
+}
+@keyframes progress {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+/* Kichik matnlar */
+body.dark-theme small {
+    color: #94a3b8 !important;
+    font-weight: 600 !important;
+}
+
+/* Card matnlari */
+body.dark-theme .card-title {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+body.dark-theme .card-text {
+    color: #e2e8f0 !important;
+    font-weight: 500 !important;
+}
+
+/* Och rang matnlar */
+body.dark-theme .text-muted {
+    color: #000 !important;     
+    font-weight: 600 !important;
+}
+
+/* Admin panel uchun maxsus */
+body.dark-theme .admin-panel h6 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+body.dark-theme .admin-panel strong {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+body.dark-theme .admin-panel p {
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
+}
+
+/* Dark theme - Navbar */
+body.dark-theme .navbar {
+    background: rgba(15, 23, 42, 0.98) !important;
+    border-bottom: 1px solid #334155;
+}
+
+body.dark-theme .navbar-brand,
+body.dark-theme .nav-link {
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .nav-link.active {
+    color: #60a5fa !important;
+    border-bottom-color: #60a5fa;
+}
+
+body.dark-theme .nav-link:hover {
+    color: #93c5fd !important;
+}
+
+/* Dark theme - Cards */
+body.dark-theme .cyber-card {
+    background: linear-gradient(145deg, #1e293b 0%, #334155 100%) !important;
+    border: 1px solid #475569;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .cyber-card:hover {
+    border-color: #60a5fa;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark theme - Tables */
+body.dark-theme .table {
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .table th,
+body.dark-theme .table td {
+    color: #000  !important;
+    border-color: #121b2d !important;
+}
+
+body.dark-theme .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+body.dark-theme .table-hover tbody tr:hover {
+    background-color: rgba(51, 65, 85, 0.7) !important;
+}
+
+body.dark-theme .table-dark {
+    background: #555e68 !important;
+}
+
+/* Dark theme - Forms */
+body.dark-theme .form-control {
+    background-color: #1e293b !important;
+    border-color: #475569 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .form-control:focus {
+    background-color: #1e293b !important;
+    border-color: #60a5fa !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .form-label {
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .input-group-text {
+    background-color: #334155 !important;
+    border-color: #475569 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .form-control::placeholder {
+    color: #94a3b8 !important;
+    opacity: 0.8;
+}
+
+/* Dark theme - Buttons */
+body.dark-theme .btn-outline-primary {
+    border-color: #60a5fa;
+    color: #60a5fa;
+}
+
+body.dark-theme .btn-outline-primary:hover {
+    background-color: #60a5fa;
+    border-color: #60a5fa;
+    color: #1e293b;
+}
+
+/* Dark theme - Hero section */
+body.dark-theme .hero-section {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%) !important;
+}
+
+/* Dark theme - Footer */
+body.dark-theme footer {
+    background: #0f172a !important;
+    border-top: 1px solid #334155;
+}
+
+/* Dark theme - Alerts */
+body.dark-theme .alert {
+    background-color: #1e293b;
+    border: 1px solid #475569;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .alert-success {
+    background-color: #064e3b;
+    border-color: #047857;
+    color: #a7f3d0 !important;
+}
+
+body.dark-theme .alert-danger {
+    background-color: #7f1d1d;
+    border-color: #dc2626;
+    color: #fecaca !important;
+}
+
+body.dark-theme .alert-info {
+    background-color: #1e3a8a;
+    border-color: #2563eb;
+    color: #dbeafe !important;
+}
+
+/* Dark theme - Admin forms */
+body.dark-theme .admin-form .form-control {
+    background-color: #1e293b !important;
+    border-color: #475569 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .admin-form .form-label {
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .admin-form .input-group-text {
+    background-color: #334155 !important;
+    border-color: #475569 !important;
+    color: #e2e8f0 !important;
+}
+
+/* Dark theme - Lesson items */
+body.dark-theme .lesson-item {
+    background: linear-gradient(135deg, #334155 0%, #475569 100%);
+    border-left: 4px solid #60a5fa;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .lesson-item strong {
+    color: #e2e8f0 !important;
+}
+
+/* Dark theme - Badges */
+body.dark-theme .badge {
+    color: #fff !important;
+}
+
+/* Dark theme - Select options */
+body.dark-theme select option {
+    background-color: #1e293b;
+    color: #e2e8f0;
+}
+
+/* Dark theme - Contact card text */
+body.dark-theme .contact-card .text-dark,
+body.dark-theme .contact-card .text-dark-emphasis,
+body.dark-theme .contact-name,
+body.dark-theme .contact-label,
+body.dark-theme .contact-text,
+body.dark-theme .card-body strong {
+    color: #004cff !important;
+}
+body.dark-theme .card-body p {
+    color: #263245 !important
+}
+
+/* Dark theme - Students table */
+body.dark-theme .students-table .text-dark,
+body.dark-theme .student-text,
+body.dark-theme .student-link {
+    color: #e2e8f0 !important;
+}
+
+/* Dark theme - Schedule table */
+body.dark-theme .schedule-table .text-dark,
+body.dark-theme .lesson-item .text-dark,
+body.dark-theme .schedule-header,
+body.dark-theme .schedule-time,
+body.dark-theme .lesson-subject,
+body.dark-theme .lesson-room,
+body.dark-theme .lesson-teacher {
+    color: #e2e8f0 !important;
+}
+
+/* Dark theme - News cards */
+body.dark-theme .news-card .text-dark,
+body.dark-theme .news-title,
+body.dark-theme .news-content {
+    color: #e2e8f0 !important;
+}
+
+/* Dark theme - Admin schedule table */
+body.dark-theme .schedule-admin-table .text-dark,
+body.dark-theme .admin-section-title,
+body.dark-theme .admin-table-header,
+body.dark-theme .admin-table-text,
+body.dark-theme table th,
+body.dark-theme table td {
+    color: #e2e8f0 !important;
+}
+
+/* Dark theme - Contact */
+body.dark-theme .contact-name,
+body.dark-theme .contact-label,
+body.dark-theme .contact-text {
+    color: #e2e8f0 !important;
+}
+/* Loading spinner */
+.loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+/* Form validation styles */
+.is-invalid {
+    border-color: #dc3545 !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='m5.8 3.6.4.4.4-.4'/%3e%3cpath d='M6 7v1'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.is-valid {
+    border-color: #198754 !important;
+}
+
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+}
+
+.was-validated .form-control:invalid ~ .invalid-feedback {
+    display: block;
+}
+
+/* Search results */
+.search-highlight {
+    background-color: #fff3cd;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+body.dark-theme .search-highlight {
+    background-color: #856404;
+    color: #fff;
+}
+
+/* Dark theme fixes */
+body.dark-theme .student-text,
+body.dark-theme .student-link {
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .text-muted {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .card-body p {
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .contact-name,
+body.dark-theme .contact-label,
+body.dark-theme .contact-text {
+    color: #e2e8f0 !important;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .schedule-table {
+        font-size: 0.8rem;
+    }
+    
+    .schedule-table th,
+    .schedule-table td {
+        padding: 4px !important;
+    }
+    
+    .lesson-item {
+        font-size: 0.7rem;
+        padding: 6px;
+    }
+}
+
+/* Backup section styles */
+.backup-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.backup-item {
+    border-left: 4px solid #28a745;
+    margin-bottom: 10px;
+}
+/* ========== DARS JADVALI STILLARI ========== */
+.schedule-table {
+    border: 3px solid #1e40af !important;
+}
+
+.schedule-table th {
+    text-align: center;
+    background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+    color: white !important;
+    border: 3px solid #1e3a8a !important;
+    font-weight: 700;
+    padding: 12px 8px;
+}
+
+.schedule-table td {
+    vertical-align: top;
+    min-width: 160px;
+    height: 120px;
+    border: 3px solid #d1d5db !important;
+    padding: 8px;
+    background-color: #ffffff;
+}
+
+.schedule-table .bg-light {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+    font-weight: 700;
+    color: #1e293b !important;
+    border: 3px solid #9ca3af !important;
+}
+
+/* Vaqt ustuni */
+.schedule-time {
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%) !important;
+}
+
+/* Dark theme - Dars jadvali */
+body.dark-theme .schedule-table {
+    border: 3px solid #4b5563 !important;
+}
+
+body.dark-theme .schedule-table th {
+    background: linear-gradient(135deg, #1e293b 0%, #374151 100%);
+    color: #e2e8f0 !important;
+    border: 3px solid #374151 !important;
+}
+
+body.dark-theme .schedule-table td {
+    background-color: #1f2937;
+    border: 3px solid #4b5563 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .schedule-table .bg-light {
+    background: linear-gradient(135deg, #374151 0%, #4b5563 100%) !important;
+    color: #e2e8f0 !important;
+    border: 3px solid #6b7280 !important;
+}
+
+body.dark-theme .schedule-time {
+    color: #e2e8f0 !important;
+    background: linear-gradient(135deg, #4b5563 0%, #374151 100%) !important;
+}
+/* ========== ALOQA MA'LUMOTLARI STILLARI ========== */
+.contact-info h4,
+.contact-info h6,
+.contact-info strong,
+.contact-info p,
+.contact-info span {
+    color: #1e293b !important;
+}
+
+.contact-details .text-primary { color: #3b82f6 !important; }
+.contact-details .text-info { color: #06b6d4 !important; }
+.contact-details .text-danger { color: #ef4444 !important; }
+.contact-details .text-success { color: #10b981 !important; }
+.contact-details .text-warning { color: #f59e0b !important; }
+
+/* Dark theme - Aloqa ma'lumotlari */
+body.dark-theme .contact-info h4,
+body.dark-theme .contact-info h6,
+body.dark-theme .contact-info strong,
+body.dark-theme .contact-info p,
+body.dark-theme .contact-info span {
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .contact-details .text-primary { color: #60a5fa !important; }
+body.dark-theme .contact-details .text-info { color: #22d3ee !important; }
+body.dark-theme .contact-details .text-danger { color: #f87171 !important; }
+body.dark-theme .contact-details .text-success { color: #34d399 !important; }
+body.dark-theme .contact-details .text-warning { color: #fbbf24 !important; }
+
+/* ========== THEME TOGGLE STILLARI ========== */
+.theme-toggle-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.theme-toggle-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.theme-toggle-btn:hover::before {
+    left: 100%;
+}
+
+.theme-toggle-btn .sun-icon {
+    display: block;
+}
+
+.theme-toggle-btn .moon-icon {
+    display: none;
+}
+
+/* Dark theme toggle button transformation */
+body.dark-theme .theme-toggle-btn {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+body.dark-theme .theme-toggle-btn .sun-icon {
+    display: none;
+}
+
+body.dark-theme .theme-toggle-btn .moon-icon {
+    display: block;
+}
+/* ========== ADMIN PANEL TEXTLARI TUNGI REJIMDA ========== */
+/* Admin panel statistikasi */
+/* Admin panel statistikasi - TEPADAGI 4 BO'LIM */
+body.dark-theme .cyber-card .card-body p {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+}
+
+
+/* Dars jadvali admin panelida - "Kun","Vaqt","Xona","O'qituvchi" */
+body.dark-theme .admin-panel .table th {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%) !important;
+}
+
+body.dark-theme .admin-panel .table td {
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
+}
+
+
+/* Galereya admin panelida - "Sarlavha","Tavsif","Vaqt" */
+body.dark-theme .admin-panel .card strong,
+body.dark-theme .admin-panel .card small {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+/* Aloqa ma'lumotlari admin panelida - Ism, Tel, Telegram */
+body.dark-theme .admin-panel .card h6,
+body.dark-theme .admin-panel .card p,
+body.dark-theme .admin-panel .card strong {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+/* ========== YANGILIKLAR BO'LIMI TUNGI REJIMDA ========== */
+body.dark-theme .news-card .card-title {
+    color: #fffc50 !important;
+    font-weight: 800 !important;
+    font-size: 1.4rem !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+body.dark-theme .news-card .card-text {
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
+    line-height: 1.6;
+}
+
+body.dark-theme .news-card .text-muted {
+    color: #94a3b8 !important;
+    font-weight: 700 !important;
+}
+/* Statistika tugmasi uchun stil */
+.btn-info.rounded-pill {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+/* Statistika tugmasi uchun stil */
+.btn-info.rounded-pill {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    margin-top: 70px; /* Navbar pastiga tushishi uchun */
+}
+
+.btn-info.rounded-pill:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme toggle tugmasi */
+.theme-toggle-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark theme uchun */
+body.dark-theme .theme-toggle-btn {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+body.dark-theme .theme-toggle-btn .sun-icon {
+    display: none;
+}
+
+body.dark-theme .theme-toggle-btn .moon-icon {
+    display: block;
+}
+/* Talaba loginlari bo'limi uchun maxsus stillar */
+#loginList {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+}
+
+.login-item {
+    transition: all 0.2s ease;
+    background: white;
+    margin: 2px;
+    border-radius: 4px;
+}
+
+.login-item:hover {
+    background-color: #e9ecef;
+    transform: translateX(2px);
+}
+
+/* Bo'sh holatdagi stil */
+#loginList:empty::before {
+    content: "Hali hech qanday login yaratilmagan";
+    display: block;
+    text-align: center;
+    padding: 20px;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Form elementlari uchun */
+#studentSelect {
+    transition: all 0.3s ease;
+}
+
+#studentSelect:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Dark theme uchun moslashtirish */
+body.dark-theme #loginList {
+    background-color: #1e293b;
+    border-color: #475569;
+}
+.login-container {
+    overflow-y: auto;
+    transition: max-height 0.3s ease;
+}
+.login-container {
+    max-height: 200px;
+    overflow-y: auto;
+    transition: max-height 0.3s ease;
+}
+
+.login-container.login-small {
+    max-height: 150px;
+}
+.login-container {
+    max-height: 150px;
+    overflow-y: auto;
+    transition: max-height 0.3s ease;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+}
+
+.login-container.login-small {
+    max-height: 150px;
+}
+
+.login-container.login-large {
+    max-height: 300px;
+}
+
+.login-item {
+    padding: 8px 4px !important;
+    font-size: 0.9em;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.login-item:last-child {
+    border-bottom: none;
+}
+.login-container.login-large {
+    max-height: 300px;
+}
+
+.login-item {
+    padding: 8px 4px !important;
+    font-size: 0.9em;
+}
+.login-small {
+    max-height: 150px;
+}
+
+.login-large {
+    max-height: 300px;
+}
+body.dark-theme .login-item {
+    background: #334155;
+}
+
+body.dark-theme .login-item:hover {
+    background-color: #475569;
+}
+.theme-toggle-btn .sun-icon {
+    display: block;
+}
+
+.theme-toggle-btn .moon-icon {
+    display: none;
+}
+.btn-info.rounded-pill:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark theme uchun */
+body.dark-theme .btn-info.rounded-pill {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+    border: none;
+}
+/* Admin panel statistikasi - TEPADAGI 4 BO'LIM */
+body.dark-theme .cyber-card .card-body p {
+    color: #f3f3f3 !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+}
+body.dark-theme .news-card .card-text {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    line-height: 1.6;
+}
+
+body.dark-theme .news-card .text-muted {
+    color: #000000 !important;
+    font-weight: 600 !important;
+}
+
+/* ========== GALEREYA BO'LIMI TUNGI REJIMDA ========== */
+body.dark-theme .gallery-card .card-title {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: 1.2rem !important;
+}
+
+body.dark-theme .gallery-card .card-text {
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
+}
+
+body.dark-theme .gallery-card .text-muted {
+    color: #94a3b8 !important;
+    font-weight: 700 !important;
+}
+
+/* ========== MINIMALIST VA ZAMONAVIY STILLAR ========== */
+/* Sarlavhalar */
+.cyber-title {
+    color: #1e293b !important;
+    font-weight: 800 !important;
+    font-size: 1.3rem !important;
+    letter-spacing: -0.5px;
+}
+
+body.dark-theme .cyber-title {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+/* Kichik sarlavhalar */
+.cyber-subtitle {
+    color: #374151 !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+}
+
+body.dark-theme .cyber-subtitle {
+    color: #e2e8f0 !important;
+}
+
+/* Matnlar */
+.cyber-text {
+    color: #4b5563 !important;
+    font-weight: 500 !important;
+    line-height: 1.6;
+}
+
+body.dark-theme .cyber-text {
+    color: #cbd5e1 !important;
+}
+
+/* Vaqt va sanalar */
+.cyber-time {
+    color: #6b7280 !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+}
+
+body.dark-theme .cyber-time {
+    color: #94a3b8 !important;
+}
+
+/* ========== CARD IMPROVEMENTS ========== */
+.cyber-card-modern {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%) !important;
+    border: none !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.cyber-card-modern:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+body.dark-theme .cyber-card-modern {
+    background: linear-gradient(145deg, #1e293b 0%, #334155 100%) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Yangiliklar kartasi */
+.news-card-modern {
+    border-left: 6px solid #3b82f6 !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+body.dark-theme .news-card-modern {
+    border-left: 6px solid #60a5fa !important;
+}
+
+/* Galereya kartasi */
+.gallery-card-modern {
+    border-radius: 12px !important;
+    overflow: hidden;
+    transition: all 0.3s ease !important;
+}
+
+.gallery-card-modern:hover {
+    transform: scale(1.02) !important;
+}
+
+/* ========== ADMIN PANEL IMPROVEMENTS ========== */
+.admin-section-title {
+    color: #1e293b !important;
+    font-weight: 800 !important;
+    font-size: 1.2rem !important;
+    border-bottom: 3px solid #3b82f6;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+
+body.dark-theme .admin-section-title {
+    color: #ffffff !important;
+    border-bottom: 3px solid #60a5fa;
+}
+
+.admin-table-header {
+    color: #1e293b !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+}
+
+body.dark-theme .admin-table-header {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%) !important;
+}
+
+/* Statistik kartalar */
+.stats-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    border-radius: 16px !important;
+    border: none !important;
+}
+
+.stats-card h3 {
+    color: white !important;
+    font-weight: 800 !important;
+    font-size: 2rem !important;
+}
+
+.stats-card p {
+    color: rgba(255,255,255,0.9) !important;
+    font-weight: 600 !important;
+}
+/* Smooth theme transition */
+* {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
+}
+/* Student card hover effekti */
+.student-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.student-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #3b82f6;
+}
+
+.student-actions {
+    transition: opacity 0.3s ease;
+}
+
+/* Dark theme uchun */
+body.dark-theme .student-card {
+    border-color: #475569;
+}
+
+body.dark-theme .student-card:hover {
+    border-color: #60a5fa;
+}

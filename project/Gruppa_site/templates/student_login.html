@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Talaba Kirishi{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card cyber-card shadow">
+        <div class="card-header bg-info text-white text-center py-3">
+          <h4 class="mb-0"><i class="fa-solid fa-graduation-cap me-2"></i>Talaba Kirishi</h4>
+        </div>
+        <div class="card-body p-4">
+          <form method="POST">
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Login</label>
+              <input type="text" class="form-control" name="username" required placeholder="Talaba logini">
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Parol</label>
+              <input type="password" class="form-control" name="password" required placeholder="Parol">
+            </div>
+            <button type="submit" class="btn btn-info w-100 py-2 fw-semibold">
+              <i class="fa-solid fa-right-to-bracket me-2"></i>Tizimga kirish
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,125 @@
+2025-10-28 20:21:23,380 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-28 20:21:39,748 ERROR: Exception on /admin/edit_student/37 [GET] [in /usr/lib/python3/dist-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/coder/project/Gruppa_site/app.py", line 125, in decorated_function
+    return f(*args, **kwargs)
+  File "/home/coder/project/Gruppa_site/app.py", line 657, in edit_student
+    return render_template("edit_student.html", student=student)
+  File "/usr/lib/python3/dist-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/usr/lib/python3/dist-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: edit_student.html
+2025-10-28 20:22:48,956 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-28 20:27:39,315 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-28 21:47:32,592 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-28 22:02:12,046 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-28 22:57:15,387 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-28 23:14:46,135 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-28 23:53:06,893 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-29 00:00:32,952 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-29 00:03:23,934 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-29 00:23:10,277 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-29 00:23:16,729 ERROR: Exception on /admin/panel [GET] [in /home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/coder/project/Gruppa_site/app.py", line 125, in decorated_function
+    return f(*args, **kwargs)
+  File "/home/coder/project/Gruppa_site/app.py", line 785, in admin_panel
+    return render_template("admin_panel.html",
+                         students=students,
+    ...<5 lines>...
+                         student_logins=student_logins,
+                         stats=stats)  # stats ni qo'shish
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/jinja2/environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/coder/project/Gruppa_site/templates/admin_panel.html", line 106, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+2025-10-29 00:31:11,130 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-29 00:31:18,852 ERROR: Exception on /admin/panel [GET] [in /home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/coder/project/Gruppa_site/app.py", line 125, in decorated_function
+    return f(*args, **kwargs)
+  File "/home/coder/project/Gruppa_site/app.py", line 785, in admin_panel
+    return render_template("admin_panel.html",
+                         students=students,
+    ...<5 lines>...
+                         student_logins=student_logins,
+                         stats=stats)  # stats ni qo'shish
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/jinja2/environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/coder/project/Gruppa_site/venv/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/coder/project/Gruppa_site/templates/admin_panel.html", line 821, in template
+    {% endblock %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endblock'.
+2025-10-29 00:36:04,962 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]

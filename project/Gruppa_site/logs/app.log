@@ -1,0 +1,151 @@
+2025-10-29 20:48:36,218 ERROR: Exception on /admin [GET] [in /usr/lib/python3/dist-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/coder/project/Gruppa_site/app.py", line 828, in admin_login_page
+    return render_template("admin_login.html")
+  File "/usr/lib/python3/dist-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/usr/lib/python3/dist-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/coder/project/Gruppa_site/templates/admin_login.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/coder/project/Gruppa_site/templates/base.html", line 132, in top-level template code
+    {% block content %}
+  File "/home/coder/project/Gruppa_site/templates/admin_login.html", line 14, in block 'content'
+    ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/jinja2/utils.py", line 95, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+2025-10-29 20:48:40,933 ERROR: Exception on /admin [GET] [in /usr/lib/python3/dist-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/coder/project/Gruppa_site/app.py", line 828, in admin_login_page
+    return render_template("admin_login.html")
+  File "/usr/lib/python3/dist-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/usr/lib/python3/dist-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/coder/project/Gruppa_site/templates/admin_login.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/coder/project/Gruppa_site/templates/base.html", line 132, in top-level template code
+    {% block content %}
+  File "/home/coder/project/Gruppa_site/templates/admin_login.html", line 14, in block 'content'
+    ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/jinja2/utils.py", line 95, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+2025-10-29 20:52:46,514 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-29 20:52:57,489 ERROR: Exception on /admin/panel [GET] [in /usr/lib/python3/dist-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/coder/project/Gruppa_site/app.py", line 128, in decorated_function
+    return f(*args, **kwargs)
+  File "/home/coder/project/Gruppa_site/app.py", line 868, in admin_panel
+    return render_template("admin_panel.html",
+                         students=students,
+    ...<6 lines>...
+                         stats=stats,
+                         feedbacks_count=feedbacks_count) # stats ni qo'shish
+  File "/usr/lib/python3/dist-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/usr/lib/python3/dist-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/coder/project/Gruppa_site/templates/admin_panel.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/coder/project/Gruppa_site/templates/base.html", line 132, in top-level template code
+    {% block content %}
+  File "/home/coder/project/Gruppa_site/templates/admin_panel.html", line 219, in block 'content'
+    ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/jinja2/utils.py", line 95, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+2025-10-29 20:54:09,595 ERROR: Exception on /admin/panel [GET] [in /usr/lib/python3/dist-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/coder/project/Gruppa_site/app.py", line 128, in decorated_function
+    return f(*args, **kwargs)
+  File "/home/coder/project/Gruppa_site/app.py", line 868, in admin_panel
+    return render_template("admin_panel.html",
+                         students=students,
+    ...<6 lines>...
+                         stats=stats,
+                         feedbacks_count=feedbacks_count) # stats ni qo'shish
+  File "/usr/lib/python3/dist-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/usr/lib/python3/dist-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/coder/project/Gruppa_site/templates/admin_panel.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/coder/project/Gruppa_site/templates/base.html", line 132, in top-level template code
+    {% block content %}
+  File "/home/coder/project/Gruppa_site/templates/admin_panel.html", line 219, in block 'content'
+    <h6>Yangi dars qo'shish:</h6>
+    ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/jinja2/utils.py", line 95, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+2025-10-29 20:54:12,590 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-29 21:13:12,860 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-29 21:23:03,735 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-29 21:38:58,168 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-29 21:48:13,103 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-29 21:59:50,252 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-29 22:00:24,371 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-29 22:05:13,557 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]
+2025-10-30 08:58:59,810 INFO: Application startup [in /home/coder/project/Gruppa_site/app.py:45]

@@ -1,0 +1,75 @@
+  {% extends "base.html" %}
+  {% block title %}Talabalar ro'yxati{% endblock %}
+
+  {% block content %}
+  <div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2><i class="fa-solid fa-users me-2"></i>Talabalar ro'yxati</h2>
+      <span class="badge bg-primary fs-6">{{ students|length }} ta talaba</span>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-hover students-table">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Familiya</th>
+            <th>Ism</th>
+            <th>Telefon</th>
+            <th>Ijtimoiy tarmoqlar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for student in students %}
+          <tr>
+            <td class="student-text">{{ loop.index }}</td>
+            <td class="student-text">{{ student.last_name }}</td>
+            <td class="student-text">{{ student.first_name }}</td>
+            <td class="student-text">
+              <a href="tel:{{ student.phone }}" class="text-decoration-none student-link">
+                {{ student.phone }}
+              </a>
+            </td>
+            <td>
+              {% if student.social_media %}
+                {% for social in student.social_media.split('|') %}
+                  {% if social.startswith('telegram:') %}
+                  <a href="https://t.me/{{ social.split(':')[1] }}" target="_blank" 
+                    class="btn btn-outline-primary btn-sm me-1 mb-1" title="Telegram">
+                    <i class="fab fa-telegram me-1"></i>Telegram
+                  </a>
+                  {% elif social.startswith('instagram:') %}
+                  <a href="https://instagram.com/{{ social.split(':')[1] }}" target="_blank" 
+                    class="btn btn-outline-danger btn-sm me-1 mb-1" title="Instagram">
+                    <i class="fab fa-instagram me-1"></i>Instagram
+                  </a>
+                  {% elif social.startswith('facebook:') %}
+                  <a href="https://facebook.com/{{ social.split(':')[1] }}" target="_blank" 
+                    class="btn btn-outline-primary btn-sm me-1 mb-1" title="Facebook">
+                    <i class="fab fa-facebook me-1"></i>Facebook
+                  </a>
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                <span class="text-muted">-</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <style>
+  .student-text,
+  .student-link {
+      color: #1e293b !important;
+  }
+
+  body.dark-theme .student-text,
+  body.dark-theme .student-link {
+      color: #000000 !important;
+  }
+  </style>
+  {% endblock %}

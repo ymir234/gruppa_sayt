@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% block title %}Dars Jadvali{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4"><i class="fa-solid fa-calendar-days me-2"></i>Dars Jadvali</h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered schedule-table">
+      <thead>
+        <tr>
+          <th class="schedule-header">Vaqt</th>
+          <th class="schedule-header">Dushanba</th>
+          <th class="schedule-header">Seshanba</th>
+          <th class="schedule-header">Chorshanba</th>
+          <th class="schedule-header">Payshanba</th>
+          <th class="schedule-header">Juma</th>
+          <th class="schedule-header">Shanba</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 1-pair -->
+        <tr>
+          <td class="fw-bold bg-light schedule-time">08:30 - 09:50</td>
+          {% for day in ['Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'] %}
+          <td>
+            {% for item in schedule %}
+              {% if item.day == day and item.time == '08:30-09:50' %}
+              <div class="lesson-item">
+                <strong class="lesson-subject">{{ item.subject }}</strong><br>
+                <small class="lesson-room">{{ item.room }}</small><br>
+                <small class="text-muted lesson-teacher">{{ item.teacher }}</small>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </td>
+          {% endfor %}
+        </tr>
+        
+        <!-- 2-pair -->
+        <tr>
+          <td class="fw-bold bg-light schedule-time">10:00 - 11:20</td>
+          {% for day in ['Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'] %}
+          <td>
+            {% for item in schedule %}
+              {% if item.day == day and item.time == '10:00-11:20' %}
+              <div class="lesson-item">
+                <strong class="lesson-subject">{{ item.subject }}</strong><br>
+                <small class="lesson-room">{{ item.room }}</small><br>
+                <small class="text-muted lesson-teacher">{{ item.teacher }}</small>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </td>
+          {% endfor %}
+        </tr>
+        
+        <!-- 3-pair -->
+        <tr>
+          <td class="fw-bold bg-light schedule-time">11:30 - 12:50</td>
+          {% for day in ['Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'] %}
+          <td>
+            {% for item in schedule %}
+              {% if item.day == day and item.time == '11:30-12:50' %}
+              <div class="lesson-item">
+                <strong class="lesson-subject">{{ item.subject }}</strong><br>
+                <small class="lesson-room">{{ item.room }}</small><br>
+                <small class="text-muted lesson-teacher">{{ item.teacher }}</small>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </td>
+          {% endfor %}
+        </tr>
+        
+        <!-- 4-pair -->
+        <tr>
+          <td class="fw-bold bg-light schedule-time">13:30 - 14:50</td>
+          {% for day in ['Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'] %}
+          <td>
+            {% for item in schedule %}
+              {% if item.day == day and item.time == '13:30-14:50' %}
+              <div class="lesson-item">
+                <strong class="lesson-subject">{{ item.subject }}</strong><br>
+                <small class="lesson-room">{{ item.room }}</small><br>
+                <small class="text-muted lesson-teacher">{{ item.teacher }}</small>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </td>
+          {% endfor %}
+        </tr>
+        
+        <!-- 5-pair -->
+        <tr>
+          <td class="fw-bold bg-light schedule-time">15:00 - 16:20</td>
+          {% for day in ['Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'] %}
+          <td>
+            {% for item in schedule %}
+              {% if item.day == day and item.time == '15:00-16:20' %}
+              <div class="lesson-item">
+                <strong class="lesson-subject">{{ item.subject }}</strong><br>
+                <small class="lesson-room">{{ item.room }}</small><br>
+                <small class="text-muted lesson-teacher">{{ item.teacher }}</small>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </td>
+          {% endfor %}
+        </tr>
+        
+        <!-- 6-pair -->
+        <tr>
+          <td class="fw-bold bg-light schedule-time">16:30 - 17:50</td>
+          {% for day in ['Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'] %}
+          <td>
+            {% for item in schedule %}
+              {% if item.day == day and item.time == '16:30-17:50' %}
+              <div class="lesson-item">
+                <strong class="lesson-subject">{{ item.subject }}</strong><br>
+                <small class="lesson-room">{{ item.room }}</small><br>
+                <small class="text-muted lesson-teacher">{{ item.teacher }}</small>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </td>
+          {% endfor %}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+.schedule-header,
+.schedule-time,
+.lesson-subject,
+.lesson-room {
+    color: #1e293b !important;
+}
+
+body.dark-theme .schedule-header,
+body.dark-theme .schedule-time,
+body.dark-theme .lesson-subject,
+body.dark-theme .lesson-room {
+    color: #e2e8f0 !important;
+}
+</style>
+{% endblock %}

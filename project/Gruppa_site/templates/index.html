@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Kiberxavfsizlik Injeneringi - Nukus DTI{% endblock %}
+
+{% block content %}
+  <!-- Hero section -->
+  <div class="p-5 mb-4 rounded-3 hero-section text-center">
+    <div class="container py-5 hero-content">
+      <div class="cyber-badge">🔒 Kiberxavfsizlik</div>
+      <h1 class="display-4 fw-bold mb-4">Kiberxavfsizlik Injeneringi Guruhi</h1>
+      <p class="lead fs-4 mb-4">Nukus davlat texnika universiteti - 109-25 KX guruhi</p>
+      <a href="/students" class="btn btn-light btn-lg px-4 py-2 fw-semibold">
+        <i class="fa-solid fa-shield-halved me-2"></i>Guruh a'zolarini ko'rish
+      </a>
+    </div>
+  </div>
+
+  <!-- 3 ta card bo'limi -->
+  <div class="row text-center">
+    <div class="col-md-4">
+      <div class="card cyber-card mb-4 border-0">
+        <div class="card-body p-4">
+          <i class="fa-solid fa-user-shield fa-3x mb-3 cyber-icon"></i>
+          <h5 class="card-title fw-bold mb-3">Talabalar</h5>
+          <p class="card-text text-muted mb-3">Guruhimizdagi istiqbolli kiberxavfsizlik mutaxassislari</p>
+          <a href="/students" class="btn btn-outline-primary btn-sm">Ko'rish</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card cyber-card mb-4 border-0">
+        <div class="card-body p-4">
+          <i class="fa-solid fa-laptop-code fa-3x mb-3 cyber-icon"></i>
+          <h5 class="card-title fw-bold mb-3">Dars Jadvali</h5>
+          <p class="card-text text-muted mb-3">Kiberxavfsizlik fanlari bo'yicha haftalik dars jadvali</p>
+          <a href="/schedule" class="btn btn-outline-primary btn-sm">Ko'rish</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card cyber-card mb-4 border-0">
+        <div class="card-body p-4">
+          <i class="fa-solid fa-bug fa-3x mb-3 cyber-icon"></i>
+          <h5 class="card-title fw-bold mb-3">Yangiliklar</h5>
+          <p class="card-text text-muted mb-3">So'nggi xavfsizlik yangiliklari va dasturlash tanlovlari</p>
+          <a href="/news" class="btn btn-outline-primary btn-sm">Ko'rish</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

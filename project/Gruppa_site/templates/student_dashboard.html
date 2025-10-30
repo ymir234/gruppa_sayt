@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Talaba Paneli{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="fa-solid fa-graduation-cap me-2"></i>Mening Panelim</h2>
+    <div class="d-flex align-items-center">
+      <span class="badge bg-info me-2">{{ session.student_name }}</span>
+      <a href="/student/logout" class="btn btn-outline-danger btn-sm">
+        <i class="fa-solid fa-right-from-bracket me-1"></i>Chiqish
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card cyber-card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0"><i class="fa-solid fa-user me-2"></i>Shaxsiy Ma'lumotlar</h5>
+        </div>
+        <div class="card-body">
+          <p><strong>Ism-Familiya:</strong> {{ student.first_name }} {{ student.last_name }}</p>
+          <p><strong>Telefon:</strong> {{ student.phone }}</p>
+          <p><strong>Login:</strong> {{ student.username }}</p>
+          <p><strong>Oxirgi kirish:</strong> {{ student.last_login or "Birinchi marta" }}</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="card cyber-card">
+        <div class="card-header bg-success text-white">
+          <h5 class="mb-0"><i class="fa-solid fa-calendar me-2"></i>Tezkor Havolalar</h5>
+        </div>
+        <div class="card-body">
+          <div class="d-grid gap-2">
+            <a href="/schedule" class="btn btn-outline-primary">Dars Jadvali</a>
+            <a href="/news" class="btn btn-outline-success">Yangiliklar</a>
+            <a href="/gallery" class="btn btn-outline-warning">Galereya</a>
+            <a href="/contact" class="btn btn-outline-info">Aloqa</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
