@@ -1385,12 +1385,12 @@ def favicon():
     return '', 404
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5004))
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
         os.makedirs(app.config['UPLOAD_FOLDER'])
     if not os.path.exists('backups'):  # ✅ Yangi qator
         os.makedirs('backups')
     if not os.path.exists('logs'):     # ✅ Yangi qator
         os.makedirs('logs')
-    
     init_db()
-    app.run(debug=False, host='0.0.0.0', port=5004)
+    app.run(debug=False, host='0.0.0.0', port=port)
